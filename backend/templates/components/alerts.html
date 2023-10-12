@@ -1,0 +1,121 @@
+{% if msg %}
+<style>
+  .alert{
+    width: 400px;
+    height: 100px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 70px;
+    right: 13px;
+    animation: animate 2s;
+  }
+
+  @keyframes animate{
+    from{
+      right: -700px;
+    }
+  }
+
+  .close-alert{
+    visibility: hidden;
+  }
+
+  .alert img{
+    width: 70px;
+    margin-left: 300px;
+  }
+
+  .alert p{
+    font-size: 30px;
+    left: 60%;
+    margin-top: -85px;
+  }
+
+  .alert button{
+    border: none;
+    background: rgba(23, 186, 64, 0.734);
+    color: #fff;
+    width: 285px;
+    cursor: pointer;
+  }
+
+  .alert button:hover{
+    background: rgb(17, 157, 89);
+  }
+
+  @media screen and (max-width: 375px) {
+    .alert{
+      position: relative;
+      width: 280px;
+      margin-left: 10%;
+      animation: animate 2s;
+      }
+    @keyframes animate{
+      from{
+        right: -700px;
+      }
+    }
+    .alert img{
+      width: 30%;
+      margin-top: -5px;
+      margin-left: 73%;
+    }
+
+    .alert p{
+      font-size: 18px;
+      margin-left: -5px;
+      margin-top: -70px;
+    }
+
+    .alert button{
+      width: 170px;
+      margin-top: -25px;
+      margin-left: -5px;
+    }
+  }
+  @media screen and (max-width: 380px) and (min-width: 360px){
+    .alert{
+      position: relative;
+      width: 280px;
+      margin-left: 60px;
+      animation: animate 2s;
+      }
+    @keyframes animate{
+      from{
+        right: -700px;
+      }
+    }
+    .alert img{
+      width: 30%;
+      margin-top: -5px;
+      margin-left: 73%;
+    }
+
+    .alert p{
+      font-size: 18px;
+      margin-left: -5px;
+      margin-top: -70px;
+    }
+
+    .alert button{
+      width: 170px;
+      margin-top: -25px;
+      margin-left: -5px;
+    }
+  }
+</style>
+  <div class="alert" id="alert">
+    <img src="{{ url_for('static', path='images/success.png') }}">
+    <p>Succesfully registered</p>
+    <button type="button" onclick="closeAlert()">OK</button>
+  </div>
+
+<script>
+  let alert = document.getElementById("alert")
+
+  function closeAlert() {
+    alert.classList.add("close-alert")
+  }
+</script>
+{% endif %}

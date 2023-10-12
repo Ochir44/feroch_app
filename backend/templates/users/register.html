@@ -1,0 +1,210 @@
+{% extends "shared/index.html" %}
+
+
+{% block content %}
+
+<style>
+
+  body {
+    background: linear-gradient(
+    to bottom,
+    rgba(20, 10, 0, 0.7),
+    rgba(95, 42, 68, 0.7)
+    ), url("/static/images/3187.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1200px;
+  }
+
+  .container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 500px;
+    height: 700px;
+    background: transparent;
+    border-radius: 8px;
+  }
+
+  .container .register {
+    position: absolute;
+    inset: 4px;
+    background: transparent;
+    padding: 50px 40px;
+    border: 2px solid rgba(255, 255, 255, 0.56);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container .register h2{
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  .container .register .inputBox{
+    position: relative;
+    width: 400px;
+    margin-top: 35px;
+  }
+
+  .container .register .inputBox input{
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 20px 10px 10px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+  }
+
+  .container .register .inputBox label{
+    position: absolute;
+    left: 0;
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+  }
+
+  .container .register .inputBox input:valid ~ label,
+  .container .register .inputBox input:focus ~ label{
+    color: #fff;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+  }
+
+  .container .register .inputBox i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 409px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+
+  .container .register .inputBox input:valid ~ i,
+  .container .register .inputBox input:focus ~ i{
+    height: 44px;
+  }
+
+  .container .register input[type="submit"]{
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background: hsl(147, 97%, 43%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100px;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .container .register input[type="submit"]:hover{
+    background-color: #0ebe74;
+  }
+
+  .container .register input[type="submit"]:active{
+    opacity: 0.8;
+  }
+
+  .container .register .errors{
+    color: rgb(255, 23, 23);
+  }
+  @media screen and (max-width: 1024px) {
+    .container {
+      max-width: 100%;
+      min-height: 600px;
+      padding: 10px;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    .container .register {
+      max-width: 100%;
+      padding: 10px;
+      box-shadow: none;
+      background-color: transparent;
+    }
+
+    .container .register h2 {
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .container .register .inputBox {
+      width: 100%;
+      padding: 0px 10px 0px;
+      margin-bottom: -10px;
+    }
+
+    .container .register .inputBox span{
+      width: 100%;
+    }
+
+    .container .register .inputBox .input {
+      width: 100%;
+    }
+
+    .container .register .inputBox i {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="register">
+    <h2>Sign up</h2>
+    <div class="errors">
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+    </div>
+    <form method="POST">
+      <div class="inputBox">
+        <input type="text" required="required" value="{{username}}" name="username" autocomplete="off">
+        <label>Username</label>
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="text" required="required" value="{{email}}" name="email" autocomplete="off">
+        <label>Email</label>
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="password" required="required" value="{{password}}" name="password" autocomplete="off">
+        <label>Password</label>
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="password" required="required" value="{{confirm_password}}" name="confirm_password" autocomplete="off">
+        <label>Confirm password</label>
+        <i></i>
+      </div>
+      <input type="submit" value="Submit" href="/confirm-email">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

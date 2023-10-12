@@ -1,0 +1,205 @@
+{% extends "shared/index.html" %}
+
+
+{% block title %}
+  <title>Create a Post</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+  body {
+    background: linear-gradient(
+    to bottom,
+    rgba(20, 10, 0, 0.7),
+    rgba(95, 42, 68, 0.7)
+    ), url("/static/images/3187.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1200px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    position: relative;
+    width: 1300px;
+    height: 70%;
+    background: transparent;
+    border-radius: 8px;
+    top: 20px;
+  }
+
+  .container .post {
+    position: absolute;
+    inset: 4px;
+    background: transparent;
+    padding: 50px 40px;
+    border: 2px solid rgba(255, 255, 255, 0.56);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container .post h2{
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  .container .post .inputBox{
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .container .post .inputBox input{
+    position: relative;
+    padding: 7px 10px 10px;
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+  }
+
+  .container .post .inputBox span{
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+  }
+
+
+  .container .post textarea{
+    position: relative;
+    padding: 10px 10px 10px;
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    height: 200px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+    resize: none;
+  }
+
+  .container .post input[type="submit"]{
+    border: none;
+    outline: none;
+    background: hsl(147, 97%, 43%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  .container .post input[type="submit"]:hover{
+    background-color: #0ebe74;
+  }
+
+  .container .post input[type="submit"]:active{
+    opacity: 0.8;
+  }
+
+  .container .post .errors{
+    color: rgb(255, 23, 23);
+  }
+
+  .container .post .inputFile input[type="file"]{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #8f8f8f;
+    margin-top: 10px;
+  }
+
+  .container .post .inputFile input[type="file"]::file-selector-button {
+    border: none;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgb(156, 170, 0);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+
+  .container .post .inputFile input[type="file"]::file-selector-button:hover {
+    background-color: rgb(226, 226, 0);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .container {
+      max-width: 100%;
+      padding: 10px;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    .container .post {
+      max-width: 100%;
+      padding: 10px;
+      box-shadow: none;
+      background-color: transparent;
+    }
+    .container .post .inputFile input[type="file"]{
+      max-width: 100%;
+    }
+  }
+
+</style>
+
+<div class="container">
+    <div class="post">
+      <h2>Create a post</h2>
+      <div class="errors">
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </div>
+
+      <form method="POST" enctype="multipart/form-data">
+        <div class="inputFile">
+          <input type="file" id="file" name="image" value="{{image}}" accept="image/png, image/jpeg" multiple>
+        </div>
+        <div class="inputBox">
+          <input type="text" required="required" value="{{title}}" name="title" autocomplete="off">
+          <span>Title</span>
+        </div>
+        <div class="inputBox">
+          <textarea required="required" name="text" autocomplete="off">{{text}}</textarea>
+        </div>
+        <input type="submit" value="Create post">
+      </form>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

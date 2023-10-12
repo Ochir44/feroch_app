@@ -1,0 +1,10 @@
+<div class="card-blog">
+  <img class="card-img" src="/media/{{obj.image}}" onerror="if (this.src != 'static/images/no-image.png')
+  this.src = 'static/images/no-image.png';">
+  <div class="card-body">
+    <h5 class="card-title">{{obj.title}}</h5>
+    <p class="card-text" id="text">{{obj.text}}</p>
+    <p class="card-date">{{obj.date_posted}}</p>
+    <a href="/details/{{obj.id}}" id="btn" class="btn btn-primary">Read more</a>
+  </div>
+</div>

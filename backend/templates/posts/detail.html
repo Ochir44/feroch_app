@@ -1,0 +1,100 @@
+{% extends "shared/index.html" %}
+
+
+{% block title %}
+  <title>Post Detail</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+  .detail {
+    background: hwb(0 15% 85%);
+    border-radius: 10px;
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .detail .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .detail .title {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .detail .text {
+    color: #b3b3b3;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    word-wrap: break-word;
+  }
+
+  .detail a{
+    margin-top: -1130px;
+    margin-left: 710px;
+    border: 2px solid rgba(255, 255, 255, 0.56);
+    outline: none;
+    background: transparent;
+    backdrop-filter: blur(5px);
+  }
+
+  @media screen and (max-width: 1024px){
+    .detail{
+      max-width: 80%;
+    }
+
+    .detail .img{
+      max-height: 200px;
+    }
+
+    .detail a{
+      margin-top: -530px;
+    }
+
+    @media screen and (max-width: 320px){
+      .detail a{
+        margin-left: 165px;
+      }
+    }
+    @media screen and (min-width: 375px) and (max-width: 376px) {
+      .detail a{
+        margin-left: 210px;
+      }
+    }
+    @media screen and (min-width: 425px) and (max-width: 426px) {
+      .detail a{
+        margin-left: 250px;
+      }
+    }
+    @media screen and (min-width: 768px) and (max-width: 769px) {
+      .detail a{
+        margin-left: 525px;
+      }
+    }
+  }
+
+</style>
+  <div class="detail my-5">
+    <img class="img" src="/media/{{post.image}}" alt="">
+    <h5 class="title">{{post.title}}</h5>
+    <p class="text my-3">{{post.text}}</p>
+    <a href="/update-post/{{post.id}}" id="btn" class="btn btn-primary">Update</a>
+  </div>
+{% endblock %}

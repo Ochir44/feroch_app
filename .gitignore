@@ -1,0 +1,5 @@
+pytest_cache/
+pycache
+backend/.env
+env
+backend/test_db.db

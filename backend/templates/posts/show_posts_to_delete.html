@@ -1,0 +1,98 @@
+{% extends "shared/index.html" %}
+
+
+{% block title %}
+  <title>Delete posts</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Here we will transmit the messages received by our API. -->
+  <div id="result" class="text-danger text-bold lead"></div>
+<div class="container my-5">
+
+  <style>
+    .card-blog{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        width: 100%;
+        background-color: hwb(0 15% 85%);
+        border-radius: 12px;
+        margin-bottom: -20px;
+    }
+    .card-blog:hover{
+        background-color: hwb(0 19% 81%);
+    }
+    .card-blog .card-body{
+        right: -20px;
+        height: 200px;
+    }
+    .card-blog img{
+        display: block;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    .card-blog .card-body .card-title{
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #ffffff
+    }
+    .card-blog .card-body .card-text{
+        color: #b3b3b3;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 350px;
+    }
+    .card-blog .card-body .card-date{
+        color: #b3b3b3;
+        margin-left: 60%;
+        margin-top: 15%;
+    }
+    .card-blog .card-body .btn{
+      background: rgb(171, 3, 3);
+      border: none;
+      margin-top: -25%;
+    }
+  </style>
+  <div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+      {% for post in posts %}
+      <div class="col">
+        <div class="card-blog">
+          <img class="card-img" src="/media/{{post.image}}" onerror="if (this.src != '../static/images/no-image.png')
+          this.src = '../static/images/no-image.png';">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text" id="text">{{post.text}}</p>
+            <p class="card-date">{{post.date_posted}}</p>
+            <a onclick="delete_post({{post.id}})" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+  async function delete_post(id){
+    // This function is called with the post ID when the delete button is pressed.
+      await fetch('/posts/delete/'+id,{
+          method:'DELETE',})
+      .then(response => response.json())
+      .then(document.getElementById('result').innerHTML = "Refreshing...")
+      .then(data => document.getElementById('result').innerHTML = data.detail);
+  }
+</script>
+{% endblock %}

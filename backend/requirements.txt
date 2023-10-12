@@ -1,0 +1,44 @@
+fastapi
+uvicorn
+gunicorn
+
+# for template
+jinja2
+
+# for static files
+aiofiles
+
+# for database
+sqlalchemy
+psycopg2-binary==2.9.6
+
+# for loading environment variables
+python-dotenv==1.0.0
+
+# for email validation
+pydantic<2.0.0
+pydantic[email]
+
+# hashing
+passlib[bcrypt]
+
+#for accessing form data
+python-multipart
+
+# for testing
+pytest
+pytest-asyncio
+requests
+pytest-async-sqlalchemy
+
+# for  cleaning up codebase on each commit
+pre-commit
+
+# for jwt tokens
+python-jose
+
+# for confirm email
+fastapi-mail
+
+# previous requirements
+alembic==1.11.1

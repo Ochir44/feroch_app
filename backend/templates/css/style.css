@@ -1,0 +1,51 @@
+/* Card posts */
+
+.card-blog{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    width: 100%;
+    background-color: hwb(0 15% 85%);
+    border-radius: 12px;
+    margin-bottom: -20px;
+}
+.card-blog:hover{
+    background-color: hwb(0 19% 81%);
+}
+.card-blog .card-body{
+    right: -20px;
+    height: 200px;
+}
+.card-blog img{
+    display: block;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.card-blog .card-body .card-title{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffffff
+}
+.card-blog .card-body .card-text{
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 350px;
+}
+.card-blog .card-body .card-date{
+    color: #b3b3b3;
+    margin-left: 60%;
+    margin-top: 15%;
+}
+.card-blog .card-body .btn{
+    background: rgb(45, 10, 94);
+    border: none;
+    margin-top: -25%;
+}

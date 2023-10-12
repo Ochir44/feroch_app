@@ -1,0 +1,23 @@
+{% extends "shared/index.html" %}
+
+
+{% block title %}
+  <title>Feroch</title>
+{% endblock %}
+
+{% block content %}
+{% with msg=msg %}
+  {% include "components/alerts.html" %}
+{% endwith %}
+<div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+      {% for post in posts %}
+      <div class="col">
+        {% with obj=post %}
+      	{% include "components/cards.html" %}
+    	  {% endwith %}
+      </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
